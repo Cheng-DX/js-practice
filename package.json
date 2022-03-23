@@ -1,0 +1,17 @@
+{
+  "name": "jscode",
+  "version": "0.0.1",
+  "description": "codes of js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "keywords": [
+    "js"
+  ],
+  "author": "ChengDX",
+  "license": "MIT",
+  "dependencies": {
+    "vite": "^2.8.6"
+  }
+}
