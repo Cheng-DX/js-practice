@@ -1,5 +1,5 @@
-function createNodes(root, whatToShow, filter) {
-  const iterator = document.createNodeIterator(root, whatToShow, filter, false)
+function createNodes(root: HTMLElement, whatToShow?: number, filter?: NodeFilter) {
+  const iterator = document.createNodeIterator(root, whatToShow, filter)
   const nodes = {
     [Symbol.iterator]() {
       return {
@@ -20,10 +20,9 @@ function createNodes(root, whatToShow, filter) {
   }
   return nodes
 }
-
 for (let node of createNodes(document.body, NodeFilter.SHOW_ELEMENT, node =>
-  node.tagName.toLowerCase() === 'div'
+  node.nodeName.toLowerCase() === 'div'
     ? NodeFilter.FILTER_ACCEPT
     : NodeFilter.FILTER_SKIP
 ))
-  console.log(node.className)
+  console.log(node)

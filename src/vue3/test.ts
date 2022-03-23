@@ -1,4 +1,4 @@
-const bucket = new Set()
+const bucket = new Set<Function>()
 
 const data = { text: 'hello world' }
 
@@ -9,9 +9,7 @@ const obj = new Proxy(data,{
   },
   set(target, key, newVal){
     target[key] = newVal
-
     bucket.forEach(fn => fn())
-
     return true
   }
 

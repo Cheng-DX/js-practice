@@ -1,8 +1,5 @@
-function renderer(domString, container) {
-  console.log(document.getElementById('app'))
+function renderer(domString: string, container: HTMLElement) {
   container.innerHTML = domString
 }
-
-alert('OK')
 
 renderer('<h1>Hello World</h1>', document.getElementById('app'))

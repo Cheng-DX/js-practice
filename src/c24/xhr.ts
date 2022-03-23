@@ -6,7 +6,7 @@ get2(url)
   .catch(err => console.log(err))
   .finally(() => console.log('finally'))
 
-function get1(url) {
+function get1(url: string) {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest()
     xhr.open('GET', url)
@@ -16,7 +16,7 @@ function get1(url) {
   })
 }
 
-function get2(url) {
+function get2(url: string) {
   return new Promise(resolve => {
     const xhr = new XMLHttpRequest()
     xhr.onreadystatechange = () => {
@@ -30,5 +30,3 @@ function get2(url) {
     xhr.send(null)
   })
 }
-
-
