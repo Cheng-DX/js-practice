@@ -21,7 +21,6 @@ for (const key of person) {
   console.log(key)
 }
 
-// 比较版本号
 function compare(v1: string, op: string, v2: string) {
   const v1Arr = v1.split('.')
   const v2Arr = v2.split('.')
