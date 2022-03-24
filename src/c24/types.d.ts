@@ -3,8 +3,8 @@ export type Axios = {
   post: (url: string, data: any) => Promise<any>
 }
 export type AxiosConfig = {
-  base: string,
-  beforeRequest?: Function,
+  base: string
+  beforeRequest?: Function
   afterResponse?: Function
 }
 export interface LocalResponse {
