@@ -7,4 +7,3 @@ function sleep(ms: number) {
 // fetch(path)
 //   .then(res => res.text())
 //   .then(text => (document.body.innerHTML = text))
-
