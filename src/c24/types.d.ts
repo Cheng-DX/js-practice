@@ -7,7 +7,7 @@ export type AxiosConfig = {
   beforeRequest?: Function
   afterResponse?: Function
 }
-export interface LocalResponse {
+export type LocalResponse {
   status: number
   statusText: string
   data: any
