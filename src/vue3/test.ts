@@ -12,7 +12,6 @@ const obj = new Proxy(data,{
     bucket.forEach(fn => fn())
     return true
   }
-
 })
 
 function effect() {

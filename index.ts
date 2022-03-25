@@ -1,2 +1,1 @@
-import './src/c11/settimeout'
-import './src/c11/promise'
+import './src/c11/async'

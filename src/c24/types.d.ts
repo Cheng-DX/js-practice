@@ -1,6 +1,6 @@
 export type Axios = {
-  get: (url: string, params?: object) => Promise<any>
-  post: (url: string, data: any) => Promise<any>
+  get: (url: string, params?: object) => Promise<LocalResponse>
+  post: (url: string, data: any) => Promise<LocalResponse>
 }
 export type AxiosConfig = {
   base: string
