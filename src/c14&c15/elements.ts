@@ -1,4 +1,8 @@
-function createNodes(root: HTMLElement, whatToShow?: number, filter?: NodeFilter) {
+function createNodes(
+  root: HTMLElement,
+  whatToShow?: number,
+  filter?: NodeFilter
+) {
   const iterator = document.createNodeIterator(root, whatToShow, filter)
   const nodes = {
     [Symbol.iterator]() {

@@ -20,6 +20,7 @@ function createAxios(config: AxiosConfig) {
   base.endsWith('/') || (base += '/')
 
   axios.get = (url: string, params: object) => {
+    console.log('this:',this.name)
     url = removeFirstSlash(url)
     if (params) url = addURLParams(url, params)
     beforeRequest()
@@ -32,8 +33,8 @@ function createAxios(config: AxiosConfig) {
         .catch(err => reject(err))
     })
   }
-
   axios.post = (url: string, data: any) => {
+    
     url = removeFirstSlash(url)
     beforeRequest()
     return new Promise((resolve, reject) => {
@@ -55,3 +56,4 @@ function createAxios(config: AxiosConfig) {
 }
 
 export { createAxios }
+

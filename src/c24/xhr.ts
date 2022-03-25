@@ -30,3 +30,5 @@ function get2(url: string) {
     xhr.send(null)
   })
 }
+
+export { get1, get2 }
