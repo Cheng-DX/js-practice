@@ -1,1 +1,2 @@
-import './src/c24/test.ts'
+import './src/c11/settimeout'
+import './src/c11/promise'
