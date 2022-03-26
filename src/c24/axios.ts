@@ -1,4 +1,5 @@
 import { removeFirstSlash, addURLParams } from '../utils/functions'
+import { nop } from '../utils/shared'
 import type { AxiosConfig, Axios, LocalResponse } from './types'
 
 async function dealWithResponse(res: Response) {
@@ -16,11 +17,10 @@ function createAxios(config: AxiosConfig) {
     post: null,
     get: null
   }
-  let { base = '', beforeRequest, afterResponse } = config
+  let { base = '', beforeRequest = nop, afterResponse = nop } = config
   base.endsWith('/') || (base += '/')
 
   axios.get = (url: string, params: object) => {
-    console.log('this:',this.name)
     url = removeFirstSlash(url)
     if (params) url = addURLParams(url, params)
     beforeRequest()
@@ -34,7 +34,6 @@ function createAxios(config: AxiosConfig) {
     })
   }
   axios.post = (url: string, data: any) => {
-    
     url = removeFirstSlash(url)
     beforeRequest()
     return new Promise((resolve, reject) => {
@@ -56,4 +55,3 @@ function createAxios(config: AxiosConfig) {
 }
 
 export { createAxios }
-
