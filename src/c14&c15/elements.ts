@@ -24,9 +24,22 @@ function createNodes(
   }
   return nodes
 }
-for (let node of createNodes(document.body, NodeFilter.SHOW_ELEMENT, node =>
-  node.nodeName.toLowerCase() === 'div'
-    ? NodeFilter.FILTER_ACCEPT
-    : NodeFilter.FILTER_SKIP
-))
-  console.log(node)
+
+const nodes = createNodes(document.body, NodeFilter.SHOW_ELEMENT, node => {
+  if (node instanceof HTMLElement) {
+    return node.tagName.toLowerCase() === 'div'
+      ? NodeFilter.FILTER_ACCEPT
+      : NodeFilter.FILTER_SKIP
+  }
+  return NodeFilter.FILTER_SKIP
+})
+
+for (let node of nodes) console.log(node)
+
+function testq(value: number | Function) {
+  return typeof value === 'function' ? value() : value
+}
+
+console.log(testq(() => 12))
+
+console.log(testq(12))
