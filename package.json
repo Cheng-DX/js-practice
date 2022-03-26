@@ -4,7 +4,8 @@
   "description": "codes of js",
   "scripts": {
     "dev": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "test": "vitest"
   },
   "keywords": [
     "js"
@@ -13,5 +14,8 @@
   "license": "MIT",
   "dependencies": {
     "vite": "^2.8.6"
+  },
+  "devDependencies": {
+    "vitest": "^0.7.11"
   }
 }
