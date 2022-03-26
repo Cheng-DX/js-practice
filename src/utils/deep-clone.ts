@@ -99,5 +99,4 @@ function deepClone(src: any) {
   return target
 }
 
-let clone = deepClone(complexObject)
-console.log(complexObject, clone)
+export default deepClone
