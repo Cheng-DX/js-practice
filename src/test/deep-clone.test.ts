@@ -1,5 +1,5 @@
 import deepClone from '../utils/deep-clone'
-
+import { it, expect } from 'vitest'
 const temp = {
   name: 'test'
 }
@@ -30,7 +30,7 @@ let complexObject = {
     ['key2', 'value2']
   ]),
   i: new Set<any>([1, 2, 3, 4, 5]),
-  j: new Date(),
+  // j: new Date(),
   k: new RegExp('abc'),
   l: new Error('error'),
   n: new WeakMap<any, any>([[temp, 'weakMap']]),
@@ -46,4 +46,6 @@ let complexObject = {
 complexObject['self'] = complexObject
 complexObject.h.set('self', complexObject)
 
-console.log(complexObject, deepClone(complexObject))
+it('should clone an object', () => {
+  const clone = deepClone(complexObject)
+})
