@@ -1,1 +1,1 @@
-import './src/alogrithms/parse-tree'
+import './src/exams/zijie/no1'
