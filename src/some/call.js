@@ -1,7 +1,15 @@
 function call(newThis) {
-  var fn = this
+  var fn = this || window
   newThis.__fn__ = fn
-  return newThis.__fn__()
+  var argStr = ''
+  if (arguments.length > 1) {
+    for (var i = 1; i < arguments.length; i++) {
+      argStr += 'arguments[' + i + '], '
+    }
+  }
+  var result = eval('newThis.__fn__(' + argStr + ')')
+  delete newThis.__fn__
+  return result
 }
 Function.prototype.newCall = call
 
