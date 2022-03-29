@@ -25,4 +25,4 @@ var obj2 = {
 function test(arg1, arg2, arg3, arg4) {
   console.log(this.name, arg1, arg2, arg3, arg4)
 }
-test.apply1(obj2, [1, 2, 3, 4])
+// test.apply1(obj2, [1, 2, 3, 4])

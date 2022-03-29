@@ -1,4 +1,4 @@
-import './src/some/call'
+import './src/some/apply'
 
 let button = document.querySelector('button')
 

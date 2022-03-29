@@ -24,4 +24,4 @@ var obj2 = {
   name: 'obj2'
 }
 
-test.newCall(obj2)
+// test.newCall(obj2)
