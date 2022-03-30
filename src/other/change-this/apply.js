@@ -1,4 +1,4 @@
-import './call'
+import '../change-this/call'
 
 function apply(newThis, args) {
   var fn = this || window

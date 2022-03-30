@@ -1,5 +1,5 @@
 import { removeFirstSlash, addURLParams } from '../utils/functions'
-import { nop } from '../utils/shared'
+import { nop } from '../some/shared'
 import type { AxiosConfig, Axios, LocalResponse } from './types'
 
 async function dealWithResponse(res: Response) {
