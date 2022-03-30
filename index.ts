@@ -1,1 +1,1 @@
-import './src/some/bigint'
+import './src/24.xhr&fetch/jsonp.ts'
