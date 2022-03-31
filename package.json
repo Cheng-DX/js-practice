@@ -1,19 +1,19 @@
 {
-  "name": "jscode",
+  "name": "js-practice",
   "version": "0.0.1",
-  "description": "codes of js",
+  "description": "JavaScript but TypeScript",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "test": "vitest"
   },
   "keywords": [
-    "js"
+    "JavaScript TypeScript"
   ],
   "author": "Cheng-DX",
   "license": "MIT",
   "dependencies": {
-    "vite": "^2.8.6"
+    "vite": "^2.9.0"
   },
   "devDependencies": {
     "vitest": "^0.7.11"
