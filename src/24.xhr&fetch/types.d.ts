@@ -13,3 +13,8 @@ export type LocalResponse = {
   data: any
   headers: any
 }
+
+export type Options = {
+  timeout: number
+  header: object
+}
