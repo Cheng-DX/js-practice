@@ -19,11 +19,19 @@ function createRequest(
   return new Promise<LocalResponse>((resolve, reject) => {
     let xhr = new XMLHttpRequest()
     xhr.onload = () => {
+      let headers = {}
+      xhr
+        .getAllResponseHeaders()
+        .split('\n')
+        .forEach(line => {
+          const [key, value] = line.split(':')
+          key && value && (headers[key] = value.trim())
+        })
       const res: LocalResponse = {
         status: xhr.status,
         statusText: xhr.statusText,
         data: JSON.parse(xhr.response),
-        headers: xhr.getAllResponseHeaders()
+        headers
       }
       xhr.status === 200 ? resolve(res) : reject(res)
     }
@@ -36,7 +44,12 @@ function createRequest(
     xhr.onerror = () => {
       reject(xhr.statusText)
     }
-    xhr.onloadend = () => afterResponse()
+    xhr.onabort = () => {
+      reject(`request aborted`)
+    }
+    xhr.onloadend = () => {
+      afterResponse()
+    }
     xhr.open(method, base + url)
     for (let headerKey in header) {
       xhr.setRequestHeader(headerKey, header[headerKey])

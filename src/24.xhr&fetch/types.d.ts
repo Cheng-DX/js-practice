@@ -1,6 +1,10 @@
 export type Axios = {
-  get: (url: string, params?: object) => Promise<LocalResponse>
-  post: (url: string, data: any) => Promise<LocalResponse>
+  get: (
+    url: string,
+    params?: object,
+    options?: Options
+  ) => Promise<LocalResponse>
+  post: (url: string, data?: any, options?: Options) => Promise<LocalResponse>
 }
 export type AxiosConfig = {
   base: string
@@ -15,6 +19,6 @@ export type LocalResponse = {
 }
 
 export type Options = {
-  timeout: number
-  header: object
+  timeout?: number
+  header?: object
 }

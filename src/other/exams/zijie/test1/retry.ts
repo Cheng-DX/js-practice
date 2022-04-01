@@ -2,7 +2,13 @@ import { createAxios } from 'fetcher/axios'
 import { AxiosConfig, LocalResponse } from 'fetcher/types'
 
 const config: AxiosConfig = {
-  base: 'https://jsonplaceholder.typicode.com/'
+  base: 'https://jsonplaceholder.typicode.com/',
+  beforeRequest: () => {
+    console.log('beforeRequest')
+  },
+  afterResponse: () => {
+    console.log('afterResponse')
+  }
 }
 const axios = createAxios(config)
 
@@ -27,7 +33,13 @@ function retry(promiseFunction: () => Promise<any>, timesLimit: number) {
   })
 }
 
-retryByAwait(() => axios.get('posts/1'), 10)
+retry(
+  () =>
+    axios.get('posts/112', undefined, {
+      timeout: 200
+    }),
+  10
+)
   .then(res => {
     console.log('final res', res)
   })
@@ -40,7 +52,7 @@ function retryByAwait(promiseFunction: () => Promise<any>, timesLimit: number) {
   const retryPromise = async () => {
     try {
       const res = await promiseFunction()
-      console.log('1', res)
+      return res
     } catch (err) {
       currentTimes++
       if (currentTimes < timesLimit) {
