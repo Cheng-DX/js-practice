@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "fetcher/*": ["./src/24.xhr&fetch/*"],
+      "other/*": ["./src/other/*"]
+    },
+    "target": "es2017",
+    "module": "esnext",
+    "lib": ["DOM", "ESNext"],
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "strict": false,
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true
+  }
+}
