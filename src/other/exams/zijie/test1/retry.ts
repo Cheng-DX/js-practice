@@ -1,5 +1,5 @@
-import { createAxios } from '../../../../24.xhr&fetch/axios'
-import { AxiosConfig } from '../../../../24.xhr&fetch/types'
+import { createAxios } from 'fetcher/axios'
+import { AxiosConfig, LocalResponse } from 'fetcher/types'
 
 const config: AxiosConfig = {
   base: 'https://jsonplaceholder.typicode.com/'
@@ -7,7 +7,7 @@ const config: AxiosConfig = {
 const axios = createAxios(config)
 
 function retry(promiseFunction: () => Promise<any>, timesLimit: number) {
-  return new Promise((resolve, reject) => {
+  return new Promise<any>((resolve, reject) => {
     let currentTimes = 0
     const retryPromise = () => {
       promiseFunction()
@@ -27,7 +27,7 @@ function retry(promiseFunction: () => Promise<any>, timesLimit: number) {
   })
 }
 
-retry(() => axios.get('/p'), 10)
+retryByAwait(() => axios.get('posts/1'), 10)
   .then(res => {
     console.log('final res', res)
   })
