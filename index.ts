@@ -1,4 +1,4 @@
-import '@/other/exams/zijie/test1/retry'
+import '@/other/some/link-add'
 
 function random(min: number, max: number) {
   return Math.floor(Math.random() * (max - min) + min)
