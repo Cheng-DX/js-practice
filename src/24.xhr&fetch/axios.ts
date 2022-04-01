@@ -1,5 +1,5 @@
-import { removeFirstSlash, addURLParams } from '../utils/functions'
-import { nop } from '../some/shared'
+import { removeFirstSlash, addURLParams } from '../other/encode-URL'
+import { nop } from '../other/shared'
 import type { AxiosConfig, Axios, LocalResponse } from './types'
 
 async function dealWithResponse(res: Response) {
@@ -28,7 +28,8 @@ function createAxios(config: AxiosConfig) {
       fetch(base + url)
         .then(res => {
           afterResponse()
-          resolve(dealWithResponse(res))
+          const result = dealWithResponse(res)
+          res.status === 200 ? resolve(result) : reject(result)
         })
         .catch(err => reject(err))
     })
