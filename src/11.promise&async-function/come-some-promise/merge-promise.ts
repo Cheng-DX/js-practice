@@ -1,16 +1,33 @@
 // 实现 mergePromise 函数，把传进去的函数数组按顺序先后执行，
 // 并且把返回的数据先后放到数组 data 中。
 
+// function mergePromise(...args: Array<Function>) {
+//   let data = []
+//   let promise: Promise<any> = Promise.resolve()
+//   for (let fn of args) {
+//     promise = promise
+//       .then(() => fn())
+//       .then(value => {
+//         data.push(value)
+//         return data
+//       })
+//   }
+//   return promise
+// }
+
 function mergePromise(...args: Array<Function>) {
   let data = []
   let promise: Promise<any> = Promise.resolve()
   for (let fn of args) {
-    promise = promise
-      .then(() => fn())
-      .then(value => {
-        data.push(value)
-        return data
-      })
+    promise = promise.then(
+      () =>
+        new Promise((res, rej) => {
+          fn().then((r: any) => {
+            data.push(r)
+            res(data)
+          })
+        })
+    )
   }
   return promise
 }
@@ -44,3 +61,22 @@ mergePromise(ajax1, ajax2, ajax3).then(data => {
   console.log('done')
   console.log(data)
 })
+
+function retry(fn: Function, limitTime: number) {
+  return new Promise((resolve, reject) => {
+    let count = 0
+    function insideRetry() {
+      fn()
+        .then((result: unknown) => resolve(result))
+        .catch((err: any) => {
+          count++
+          if (count < limitTime) {
+            insideRetry()
+          } else {
+            reject(err)
+          }
+        })
+    }
+    insideRetry()
+  })
+}
