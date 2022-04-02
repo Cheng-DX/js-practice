@@ -57,10 +57,10 @@ const ajax3 = () =>
     return 3
   })
 
-mergePromise(ajax1, ajax2, ajax3).then(data => {
-  console.log('done')
-  console.log(data)
-})
+// mergePromise(ajax1, ajax2, ajax3).then(data => {
+//   console.log('done')
+//   console.log(data)
+// })
 
 function retry(fn: Function, limitTime: number) {
   return new Promise((resolve, reject) => {
@@ -80,3 +80,14 @@ function retry(fn: Function, limitTime: number) {
     insideRetry()
   })
 }
+async function sleep(time: number) {
+  return new Promise((resolve, reject) => {
+    setTimeout(resolve, time)
+  })
+}
+
+;(async () => {
+  console.log('start')
+  await sleep(3000)
+  console.log('end')
+})()
