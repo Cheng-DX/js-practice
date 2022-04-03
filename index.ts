@@ -1,1 +1,1 @@
-import './src/19.form/select'
+import './src/11.promise&async-function/come-some-promise/download-image'
