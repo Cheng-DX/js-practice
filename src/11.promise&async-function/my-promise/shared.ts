@@ -1,7 +1,7 @@
-export function log(tar: any) {
+export function log(tar: any, delay: number = 0) {
   setTimeout(() => {
     console.log(tar)
-  })
+  }, delay)
 }
 
 export const PENDING = 'pending'
