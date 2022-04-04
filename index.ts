@@ -1,1 +1,1 @@
-import './src/11.promise&async-function/come-some-promise/tranficlights'
+import './src/11.promise&async-function/my-promise/__test__/new-promise.test'
