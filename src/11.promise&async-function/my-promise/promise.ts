@@ -18,7 +18,8 @@ import type {
   onRejectdFn,
   MyPromiseType
 } from './type'
-import { then } from './then'
+import { then } from './handler/then'
+import { myCatch } from './handler/catch'
 
 function MyPromise(execFn: PromiseExecFn) {
   // MyPromise instance
@@ -57,5 +58,6 @@ function MyPromise(execFn: PromiseExecFn) {
 }
 
 MyPromise.prototype.then = then
+MyPromise.prototype.catch = myCatch
 
 export { MyPromise }
