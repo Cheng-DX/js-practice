@@ -20,6 +20,8 @@ import type {
 } from './type'
 import { then } from './handler/then'
 import { myCatch } from './handler/catch'
+import { resolve as staticResolveFn } from './static-functions/promise-resolve'
+import { reject as staticRejectFn } from './static-functions/promise-reject'
 
 function MyPromise(execFn: PromiseExecFn) {
   // MyPromise instance
@@ -30,7 +32,7 @@ function MyPromise(execFn: PromiseExecFn) {
   self.onResolvedFnList = new Array<onResolvedFn>()
   self.onRejectdFnList = new Array<onRejectdFn>()
 
-  const resolve: ResolveFn = function (resolvedValue) {
+  const resolveHandler: ResolveFn = function (resolvedValue) {
     if (self.status === PENDING) {
       setTimeout(() => {
         self.status = FULFILLED
@@ -42,7 +44,7 @@ function MyPromise(execFn: PromiseExecFn) {
       })
     }
   }
-  const reject: RejectFn = function (rejectedReason) {
+  const rejectHandler: RejectFn = function (rejectedReason) {
     if (self.status === PENDING) {
       setTimeout(() => {
         self.status = REJECTED
@@ -54,10 +56,13 @@ function MyPromise(execFn: PromiseExecFn) {
       })
     }
   }
-  execFn(resolve, reject)
+  execFn(resolveHandler, rejectHandler)
 }
 
 MyPromise.prototype.then = then
 MyPromise.prototype.catch = myCatch
+
+MyPromise.resolve = staticResolveFn
+MyPromise.reject = staticRejectFn
 
 export { MyPromise }
