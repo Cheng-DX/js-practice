@@ -4,6 +4,7 @@ export interface MyPromiseType {
   reason: any
   onResolvedFnList: Array<onResolvedFn>
   onRejectdFnList: Array<onRejectdFn>
+  onFinallyFnList: Array<Function>
 }
 
 export type ResolveFn = (value: unknown) => void
