@@ -14,8 +14,8 @@ import type {
   PromiseExecFn,
   ResolveFn,
   RejectFn,
-  onResolvedFn,
-  onRejectdFn,
+  OnResolvedFn,
+  OnRejectdFn,
   MyPromiseType
 } from './type'
 import { then } from './handler/then'
@@ -23,15 +23,16 @@ import { myCatch } from './handler/catch'
 import { resolve as staticResolveFn } from './static-functions/promise-resolve'
 import { reject as staticRejectFn } from './static-functions/promise-reject'
 import { myFinally } from './handler/finally'
-
+import { all as staticAllFn } from './static-functions/promise-all'
+import { race as staticRaceFn } from './static-functions/promise-race'
 function MyPromise(execFn: PromiseExecFn) {
   // MyPromise instance
   const self: MyPromiseType = this
   self.status = PENDING
   self.value = null
   self.reason = null
-  self.onResolvedFnList = new Array<onResolvedFn>()
-  self.onRejectdFnList = new Array<onRejectdFn>()
+  self.onResolvedFnList = new Array<OnResolvedFn>()
+  self.onRejectdFnList = new Array<OnRejectdFn>()
   self.onFinallyFnList = new Array<Function>()
 
   const resolveHandler: ResolveFn = function (resolvedValue) {
@@ -73,5 +74,7 @@ MyPromise.prototype.finally = myFinally
 
 MyPromise.resolve = staticResolveFn
 MyPromise.reject = staticRejectFn
+MyPromise.all = staticAllFn
+MyPromise.race = staticRaceFn
 
 export { MyPromise }

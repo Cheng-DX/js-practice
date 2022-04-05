@@ -2,8 +2,8 @@ export interface MyPromiseType {
   status: string
   value: any
   reason: any
-  onResolvedFnList: Array<onResolvedFn>
-  onRejectdFnList: Array<onRejectdFn>
+  onResolvedFnList: Array<OnResolvedFn>
+  onRejectdFnList: Array<OnRejectdFn>
   onFinallyFnList: Array<Function>
 }
 
@@ -12,5 +12,5 @@ export type RejectFn = (reason?: any) => void
 
 export type PromiseExecFn = (resolve: ResolveFn, reject: RejectFn) => any
 
-export type onResolvedFn = (value: unknown) => any
-export type onRejectdFn = (reason: any) => any
+export type OnResolvedFn = (value: unknown) => any
+export type OnRejectdFn = (reason: any) => any
