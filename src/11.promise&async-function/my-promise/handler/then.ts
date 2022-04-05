@@ -2,15 +2,15 @@ import { MyPromise } from '../promise'
 import { FULFILLED, PENDING, REJECTED, nop } from '../shared'
 import {
   MyPromiseType,
-  onRejectdFn,
-  onResolvedFn,
+  OnRejectdFn,
+  OnResolvedFn,
   RejectFn,
   ResolveFn
 } from '../type'
 
 export function then(
-  onResolvedCallbackFn: onResolvedFn = nop,
-  onRejectdCallbackFn: onRejectdFn = err => {
+  onResolvedCallbackFn: OnResolvedFn = nop,
+  onRejectdCallbackFn: OnRejectdFn = err => {
     throw err
   }
 ) {
