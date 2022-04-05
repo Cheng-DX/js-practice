@@ -9,10 +9,14 @@ Array.from({ length: 2 }, (_, index) => index).forEach(idx => {
       reject(`${idx} rejected`)
     }
   })
-  mp.catch((reason: any) => {
-    console.error(`MyPromise ${idx} in catch 1: ${reason}`)
-  }).catch((reason: any) => {
-    console.error(`MyPromise ${idx} in catch 2: ${reason}`)
+  mp.then((reason: any) => {
+    console.log(`MyPromise ${idx} in then : ${reason}`)
   })
+    .catch((reason: any) => {
+      console.error(`MyPromise ${idx} in catch : ${reason}`)
+    })
+    .finally(() => {
+      console.log('d')
+    })
   log(mp)
 })
