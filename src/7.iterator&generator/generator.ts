@@ -1,15 +1,40 @@
-function* generator(size: number) {
-  // for (let i = 0; i < size; i++) {
-  //   yield i
-  // }
-  // return '123'
-  console.log('generator')
+function* gen() {
+  console.log('enter')
+  let a = yield 1
+  let b = yield (function () {
+    return 2
+  })()
+  // return 3
 }
-const size = 10
+var g = gen()
+console.log(g)
 
-// for (let n of generator(size)) {
-//   console.log(n)
-// }
+let timer = null
+let fn = () => {
+  timer = setTimeout(() => {
+    const value = g.next()
+    console.log(value)
+    if (!value.done) {
+      fn()
+      console.log(g)
+    } else {
+      clearTimeout(timer)
+      console.log(g)
+    }
+  }, 1000)
+}
+fn()
 
-let obj = generator(10)
-console.log(obj.next())
+function nTimes1(length: number) {
+  return Array.from({ length }, (_, idx) => idx)
+}
+
+function* nTimes2(length: number) {
+  for (let i = 0; i < length; i++) {
+    yield i
+  }
+}
+
+for (let i of nTimes2(10)) {
+  console.log(i)
+}
