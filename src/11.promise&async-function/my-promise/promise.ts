@@ -9,9 +9,10 @@ import type {
 } from './type'
 import { then } from './handler/then'
 import { myCatch } from './handler/catch'
+import { myFinally } from './handler/finally'
+
 import { resolve as staticResolveFn } from './static-functions/promise-resolve'
 import { reject as staticRejectFn } from './static-functions/promise-reject'
-import { myFinally } from './handler/finally'
 import { all as staticAllFn } from './static-functions/promise-all'
 import { race as staticRaceFn } from './static-functions/promise-race'
 
