@@ -7,3 +7,5 @@ export function log(tar: any, delay: number = 0) {
 export const PENDING = 'pending'
 export const FULFILLED = 'fulfilled'
 export const REJECTED = 'rejected'
+
+export const nop = () => {}
