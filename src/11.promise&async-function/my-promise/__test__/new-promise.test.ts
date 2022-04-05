@@ -1,22 +1,12 @@
 import { MyPromise } from '../index'
 import { log } from '../shared'
 
-Array.from({ length: 2 }, (_, index) => index).forEach(idx => {
+const promises = []
+Array.from({ length: 4 }, (_, index) => index).forEach(idx => {
   let mp = new MyPromise((resolve, reject) => {
-    if (idx === 0) {
-      resolve(`${idx} resolved`)
-    } else {
-      reject(`${idx} rejected`)
-    }
+    setTimeout(() => resolve(`${idx} resolved`), 5000 - idx * 1000)
   })
-  mp.then((reason: any) => {
-    console.log(`MyPromise ${idx} in then : ${reason}`)
-  })
-    .catch((reason: any) => {
-      console.error(`MyPromise ${idx} in catch : ${reason}`)
-    })
-    .finally(() => {
-      console.log('d')
-    })
-  log(mp)
+  promises.push(mp)
 })
+
+MyPromise.race(promises).then((res: any) => console.log(res))
