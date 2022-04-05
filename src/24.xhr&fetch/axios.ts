@@ -1,5 +1,5 @@
-import { removeFirstSlash, addURLParams } from 'other/encode-URL'
-import { nop } from 'other/shared'
+import { removeFirstSlash, addURLParams } from '@/other/some/encode-URL'
+import { nop } from '@/other/some/shared'
 import type { AxiosConfig, Axios, LocalResponse, Options } from './types'
 
 function createRequest(
