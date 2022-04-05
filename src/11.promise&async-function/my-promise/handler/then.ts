@@ -10,7 +10,9 @@ import {
 
 export function then(
   onResolvedCallbackFn: onResolvedFn = nop,
-  onRejectdCallbackFn: onRejectdFn = nop
+  onRejectdCallbackFn: onRejectdFn = err => {
+    throw err
+  }
 ) {
   const instance: MyPromiseType = this
   let thenPromise = null
@@ -25,7 +27,7 @@ export function then(
           reject(e)
         }
       })
-      instance.onResolvedFnList.push(reason => {
+      instance.onRejectdFnList.push(reason => {
         try {
           const result = onRejectdCallbackFn(reason)
           unwrapResult(instance, result, resolve, reject)
@@ -59,7 +61,6 @@ export function then(
   } else {
     throw new Error('status error')
   }
-
   return thenPromise
 }
 
