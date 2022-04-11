@@ -1,4 +1,5 @@
 import person from './person.json'
+
 interface Person {
   name: string
   description: string

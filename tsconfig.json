@@ -6,11 +6,13 @@
       "fetcher/*": ["./src/24.xhr&fetch/*"],
       "other/*": ["./src/other/*"]
     },
-    "target": "es2017",
+    "target": "es2020",
     "module": "esnext",
     "lib": ["DOM", "ESNext"],
     "moduleResolution": "node",
     "skipLibCheck": true,
-    "skipDefaultLibCheck": true
+    "skipDefaultLibCheck": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true
   }
 }
