@@ -1,6 +1,6 @@
 export interface MerkleTree {
   root: MerkleTreeNode
-  getNode: (hash: string) => MerkleTreeNode
+  getNode: (data: string) => MerkleTreeNode
 }
 
 export interface MerkleTreeNode {

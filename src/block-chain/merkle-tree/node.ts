@@ -1,7 +1,8 @@
 import { hashCode } from './hash'
 import type { MerkleTree, MerkleTreeNode } from './types'
 
-export function getNode(hash: string) {
+export function getNode(data: string) {
+  const hash = hashCode(data)
   const tree = this as MerkleTree
   const queue = [tree.root]
   while (queue.length > 0) {

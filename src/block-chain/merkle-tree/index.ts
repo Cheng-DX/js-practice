@@ -20,4 +20,4 @@ function logTree(tree: MerkleTree) {
 }
 
 logTree(tree)
-console.log(tree.getNode(hashCode('a')))
+console.log('getNode:', tree.getNode('a'))
