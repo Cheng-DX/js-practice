@@ -12,12 +12,7 @@ const _value = 3
 const Incrementer = new web3.eth.Contract(abi)
 const encodedABI = Incrementer.methods.reset(_value).encodeABI()
 
-const reset = async () => {
-  const IncrementerTX = Incrementer.deploy({
-    data: bytecode,
-    arguments: [5]
-  })
-
+const incrementet = async () => {
   const createTransaction = await web3.eth.accounts.signTransaction(
     {
       from: address,
@@ -31,7 +26,6 @@ const reset = async () => {
   const createReceipt = await web3.eth.sendSignedTransaction(
     createTransaction.rawTransaction
   )
-  console.log('contract deployed at: ', createReceipt.contractAddress)
 }
 
-reset()
+incrementet()
