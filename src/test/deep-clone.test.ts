@@ -1,4 +1,4 @@
-import deepClone from '@/other/some/deep-clone'
+import deepClone from '../some/deep-clone'
 import { it, expect } from 'vitest'
 
 const temp = {

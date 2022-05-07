@@ -2,15 +2,14 @@ import idioms from './idiom.json'
 
 // random pick 200 words
 
-// 将单词打乱
-const shuffle = (arr: string[]) => {
+const shuffle = (arr: any[]) => {
   for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1))
     ;[arr[i], arr[j]] = [arr[j], arr[i]]
   }
   return arr
 }
-const result = shuffle(idioms)
+const result = shuffle(idioms as any[])
   .filter(item => item.word.length === 4)
   .slice(0, 1000)
   .map(item => item.word)

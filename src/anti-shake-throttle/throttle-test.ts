@@ -1,5 +1,5 @@
-import { createAxios } from 'fetcher/axios'
-import { AxiosConfig } from 'fetcher/types'
+import { createAxios } from '../xhr/axios'
+import { AxiosConfig } from '../xhr/types'
 import throttle from './throttle'
 
 const config: AxiosConfig = {

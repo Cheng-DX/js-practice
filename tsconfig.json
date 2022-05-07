@@ -3,8 +3,6 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "fetcher/*": ["./src/24.xhr&fetch/*"],
-      "other/*": ["./src/other/*"]
     },
     "target": "es2020",
     "module": "esnext",
