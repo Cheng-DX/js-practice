@@ -1,5 +1,3 @@
-// TODO 重写
-
 const sort = (arr, comparefn) => {
   let array = Object(arr)
   let length = array.length >>> 0

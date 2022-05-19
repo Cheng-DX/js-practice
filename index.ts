@@ -1,1 +1,1 @@
-import './src/block-chain/merkle-tree'
+import './src/typescript/null'
