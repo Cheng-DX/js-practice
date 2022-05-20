@@ -1,1 +1,1 @@
-import './src/typescript/null'
+import './src/typescript/indexTypes'
